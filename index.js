@@ -1,8 +1,14 @@
-function minDepth(root) {
-  if (!root) return 0;
-  if (!root.left && !root.right) return 1;
-  let min = Infinity;
-  if (root.left) min = Math.min(min, minDepth(root.left));
-  if (root.right) min = Math.min(min, minDepth(root.right));
-  return min + 1;
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) minIndex = j;
+    }
+    if (minIndex !== i) {
+      let temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
+    }
+  }
+  return arr;
 }
